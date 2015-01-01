@@ -1,4 +1,4 @@
-photobooth
+Photobooth for Pi
 ==========
 
 Transform a raspberry pi into a photobooth, using your DSLR camera (thanks to gphoto2).
@@ -7,7 +7,7 @@ Any comments/suggestions/questions are welcome.
 
 How to use ?
 ------------
-(this will be writen later ; I am working on a script in order to make it as easy as possible)
+(this will be written later ; I am working on a script in order to make it as easy as possible)
 
 Pre-requisites
 --------------
