@@ -6,27 +6,9 @@ This is a photobooth.
 When the button is pushed, it takes 4 pictures, merge them, then (if requested) print the result.
 """
 
-### TODO list ##############################################################################
-# - bouton pour extinction propre du raspberry
-# - 
-#
-#
-############################################################################################
-
-
 import RPi.GPIO as GPIO, sys, time, os, subprocess, logging, logging.handlers
 from daemon import daemon
 import photobooth as pb
-
-__author__ = "Hugues"
-__copyright__ = "Copyright 2015, the PiBOOTH project"
-__credits__ = ["Hugues", "Georges"]
-__license__ = "GPL"
-__version__ = "1.0.0"
-__maintainer__ = "Hugues"
-__email__ = "mail@gmail.com"
-__status__ = "Prototype"
-
  
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
@@ -36,13 +18,24 @@ logger.addHandler(filehandler)
 
 class MyDaemon(daemon):
 	def run(self):
-		logger.info('RUN! :-)')
-		pb.main()
-		#while True:
-    		#blink(POSE_LED,10,0.1)
-			#pb.main()
-			#time.sleep(1)
-		logger.info('end of run! :S')
+		logger.info('.... run .... :-)')
+		pb.gpio_setup()
+		pb.remove_tmp_content()
+		# Run the loop function to keep script running
+		try:			
+			while True:
+				time.sleep(1)
+
+		except KeyboardInterrupt:
+			logger.exception('Exit using CTRL+C')
+
+		except Exception as e:  
+			logger.exception('Error or exception occurred! (%s)',str(e))
+
+		finally:
+			GPIO.cleanup() # this ensures a clean exit on a GPIO point of view
+			logger.info('clean exit')
+
 
 if __name__ == "__main__":
 	daemon = MyDaemon('/tmp/daemon-photobooth.pid')
