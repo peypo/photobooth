@@ -3,7 +3,7 @@
 # install photobooth www server
 
 racine='/home/pi'
-www='raw.githubusercontent.com/peypo/photobooth/master'
+www='raw.githubusercontent.com/peypo/photobooth/draft---www-server'
 
 
 function about()
@@ -80,7 +80,7 @@ cd /var/www/
 
 if wget -r --no-parent $www/www/
 	then
-		tar xjvf libusbx_1.0.17.orig.tar.bz2
+		echo "ok :-)"
 	else
 		echo "---> WARNING : Unable to get the photobooth pages"
 		#echo "Cleaning and exiting..."
