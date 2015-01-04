@@ -9,7 +9,7 @@ www='raw.githubusercontent.com/peypo/photobooth/master'
 function about()
 {
     echo "Install all photobooth scripts"
-    echo "usage: ./script.sh [[-h]]"
+    echo "usage: ./install.sh [[-h]]"
     echo "NB : root or sudo mode is required"
 }
 
@@ -45,12 +45,12 @@ if [ "$(whoami)" != "root" ]; then
 fi
 
 line_break
-echo "Updating sources"
+echo "Update sources"
 
 sudo apt-get update
 
 line_break
-echo "Creating photobooth dedicated folders"
+echo "Create photobooth dedicated folders"
 
 # /photobooth/pictures
 # /photobooth/pictures/original
@@ -60,11 +60,11 @@ echo "Creating photobooth dedicated folders"
 sudo mkdir -p $racine/photobooth/{scripts,pictures/{montages,original,tmp}}
 
 line_break
-echo "Downloading the photobooth scripts"
+echo "Download the photobooth scripts"
 
 cd $racine/photobooth/scripts/
 
-#sudo wget $(www)/check.py
+#sudo wget $www/check.py
 
 #sudo wget raw.github.com/safay/RPi_photobooth/master/check.py
 #sudo wget raw.github.com/safay/RPi_photobooth/master/assemble_and_print
@@ -99,5 +99,5 @@ sudo $racine/photobooth/scripts/install_gphoto.sh
 #sudo python $racine/photobooth/scripts/check.py
 
 line_break
-echo "Finished!! Enjoy it!"
+echo "Done. Enjoy it!"
 line_break
